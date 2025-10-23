@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lista de scammers Warspear Online — Scammers</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Gradient de fundo para os painéis de destaque (card de aviso) */
+    .card-bg { background: linear-gradient(180deg,#6b1515,#7b1f1f); }
+    /* Estilo de fundo do card de scammer: fundo escuro sutil com borda */
+    .card-panel { background: rgba(0,0,0,0.15); border: 1px solid rgba(255, 255, 255, 0.1); }
+    /* Moldura e tamanho fixo para a imagem do avatar */
+    .avatar-frame { width: 160px; height: 160px; border-radius: 12px; overflow:hidden; }
+
+    /* Estilo de fundo do corpo (dark) */
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #0b0b0b, #121212);
+      /* Garantindo que o texto base seja visível */
+      color: #e5e7eb; 
+    }
+  </style>
+</head>
+
+<body class="font-sans">
+
+  <header class="max-w-5xl mx-auto p-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-md bg-red-600 flex items-center justify-center text-white font-black text-2xl shadow-xl">
+            ⚠️
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold text-red-400">Alerta WS: Mural dos Golpistas </h1>
+          <p class="text-sm text-gray-300">Golpes, contas roubadas e fraudes — fique atento!</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5571984373174" target="_blank"
+           class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg shadow-lg text-white font-semibold transition duration-200">
+           📩 Denunciar
+        </a>
+        <button id="clearBtn" 
+                class="px-3 py-2 border border-gray-700 bg-gray-800 hover:bg-gray-700 rounded-lg text-sm text-gray-300 transition duration-200">
+            Recarregar
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6 bg-[#4b1313] card-bg rounded-lg p-6 shadow-xl">
+      <h2 class="text-xl font-bold text-center text-yellow-300">Proteja sua conta!</h2>
+      <p class="text-sm text-gray-200 mt-2 text-center">
+        Aqui listamos contas suspeitas relatadas por jogadores. Todas as informações são públicas e de caráter informativo.
+        <strong class="block text-red-300 mt-1">⚠️ Nunca publique dados pessoais, e-mails ou prints com senhas em fóruns ou chats.</strong>
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 pb-12">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-8 bg-gray-900/50 p-4 rounded-lg border border-gray-700/50">
+      <div class="flex flex-col sm:flex-row items-stretch gap-3 w-full md:w-auto">
+        <input id="searchInput" type="search"
+               placeholder="Pesquisar por nome, servidor ou crime..."
+               class="px-4 py-2 rounded-lg bg-gray-900 border border-gray-700 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition w-full md:w-72" />
+        <select id="filterRisk"
+                class="px-4 py-2 rounded-lg bg-gray-900 border border-gray-700 focus:border-red-500 focus:ring-1 focus:ring-red-500 transition">
+          <option value="all">Todos os níveis</option>
+          <option value="alta">Alta Periculosidade</option>
+          <option value="media">Perigoso</option>
+          <option value="baixa">Baixa</option>
+        </select>
+      </div>
+      <div class="text-sm text-gray-400">Exibindo <span id="countBadge" class="font-bold text-white">0</span> registro(s)</div>
+    </div>
+
+    <section id="cardsContainer" class="mt-6 grid grid-cols-1 gap-6"></section>
+
+    <footer class="mt-12 text-xs text-gray-500 text-center">
+      <strong>Aviso legal:</strong> Este site é comunitário e informativo. Não é oficial da AIGRIND (Warspear Online). Use as informações com responsabilidade.
+    </footer>
+  </main>
+
+  <template id="cardTpl">
+    <article class="card-panel rounded-xl p-5 grid grid-cols-1 md:grid-cols-3 gap-6 items-center hover:shadow-2xl hover:shadow-red-900/20 transition duration-300">
+      
+      <div class="avatar-frame bg-gray-800 flex items-center justify-center p-2 mx-auto md:mx-0">
+        <img class="w-full h-full object-cover" src="" alt="print"/>
+      </div>
+      
+      <div class="md:col-span-2">
+        <div class="flex flex-col sm:flex-row items-start justify-between">
+          <div>
+            <h4 class="text-2xl font-extrabold name text-red-300"></h4>
+            <div class="text-sm text-gray-400 mt-1 server"></div>
+          </div>
+          <div class="text-right mt-2 sm:mt-0">
+            <div class="riskBadge text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"></div>
+            <div class="text-xs text-gray-500 mt-1 date"></div>
+          </div>
+        </div>
+
+        <p class="mt-3 desc text-gray-300 text-sm"></p>
+
+        <div class="mt-4 text-sm text-gray-400 border-t border-gray-700/50 pt-3">
+          <span class="block font-semibold">Crimes: <span class="crimes font-normal text-gray-200 italic"></span></span>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    const cardsContainer = document.getElementById('cardsContainer');
+    const cardTpl = document.getElementById('cardTpl');
+    const searchInput = document.getElementById('searchInput');
+    const filterRisk = document.getElementById('filterRisk');
+    const countBadge = document.getElementById('countBadge');
+    const clearBtn = document.getElementById('clearBtn');
+
+    // ✅ Lista de scammers com caminhos de imagem local
+    // ATENÇÃO: As imagens não estão na subpasta 'imagens/' no seu disco, mas na mesma pasta do HTML.
+    const scammers = [
+      {
+        nick: 'Armajedom',
+        server: 'BR-Tourmaline',
+        risk: 'alta',
+        desc: 'Scammer perigoso, anuncia falsos mermem, falsos gold e adora limpar bag de guild. Fique muito atento!',
+        crimes: 'Roubo de bag guild, Falsa identidade, Fraude em comércio',
+        // 🚨 CORREÇÃO: Removido 'imagens/'
+        image: 'arma.png', 
+        date: '23/10/2025'
+      },
+      {
+        nick: 'Lula',
+        server: 'BR-Tourmaline',
+        risk: 'alta',
+        desc: 'Promete item e não entrega, linguagem agressiva. Não negocie valores altos.',
+        crimes: 'Golpe de troca, Assédio, Inflação do server.',
+        // 🚨 CORREÇÃO: Removido 'imagens/'
+        image: 'lula.jpeg',
+        date: '22/10/2025'
+      },
+      {
+        nick: '(Vaga faça sua denúncia)',
+        server: 'BR-Tourmaline',
+        risk: 'alta',
+        desc: 'Especialista em phishing: envia links falsos para roubo de login e dados pessoais. NÃO clique em links dele!',
+        crimes: 'Phishing, Roubo de conta, Falsa promoção',
+        // 🚨 CORREÇÃO: Removido 'imagens/'
+        image: 'goldenboy.jpg', 
+        date: '15/10/2025'
+      },
+      {
+        nick: '(Vaga faça sua denúncia)',
+        server: 'BR-Tourmaline',
+        risk: 'baixa',
+        desc: 'Relatado por atraso na entrega de gold e atitude suspeita, mas sem roubo confirmado.',
+        crimes: 'Mau serviço, Suspeita de fraude',
+        // 🚨 CORREÇÃO: Removido 'imagens/'
+        image: 'vendedorgold.png',
+        date: '01/10/2025'
+      },
+      {
+        nick: '(Vaga faça sua denúncia)',
+        server: 'BR-Tourmaline',
+        risk: 'media', 
+        desc: 'Golpista especializado em vendas de mapas falsos ou itens de Gruta. Usava a foto do mapa como atrativo.',
+        crimes: 'Venda falsa, Má fé',
+        // 🚨 CORREÇÃO: Removido 'imagens/'
+        image: 'gruta agrupamento.png', 
+        date: '05/11/2025'
+      }
+    ];
+
+    // 🔧 Função para renderizar um único card
+    function renderCard(obj) {
+      const tpl = cardTpl.content.cloneNode(true);
+      tpl.querySelector('.name').textContent = obj.nick;
+      tpl.querySelector('.server').textContent = 'Servidor: ' + obj.server;
+      tpl.querySelector('.desc').textContent = obj.desc;
+      tpl.querySelector('.crimes').textContent = obj.crimes;
+      tpl.querySelector('.date').textContent = '📅 ' + obj.date;
+
+      // Configuração da Imagem
+      const img = tpl.querySelector('img');
+      img.src = obj.image;
+      img.alt = `Foto de ${obj.nick}`;
+      
+      // Badge de risco (melhorado com Tailwind)
+      const badge = tpl.querySelector('.riskBadge');
+      if (obj.risk === 'alta') {
+        badge.textContent = 'ALTA PERICULOSIDADE';
+        badge.classList.add('bg-red-700','text-white', 'shadow-md', 'shadow-red-900/50');
+      } else if (obj.risk === 'media') {
+        badge.textContent = 'PERIGOSO';
+        badge.classList.add('bg-yellow-500','text-gray-900');
+      } else {
+        badge.textContent = 'BAIXA';
+        badge.classList.add('bg-gray-600','text-white');
+      }
+
+      return tpl;
+    }
+
+    // 🔍 Função principal de Filtro e Busca
+    function renderAll() {
+      const q = (searchInput.value || '').toLowerCase();
+      const riskFilter = filterRisk.value;
+      
+      const filtered = scammers.filter(i => {
+        // Filtro por Nível de Risco
+        if (riskFilter !== 'all' && i.risk !== riskFilter) return false;
+        
+        // Filtro por Texto (Busca em múltiplos campos)
+        return (
+          i.nick.toLowerCase().includes(q) ||
+          i.server.toLowerCase().includes(q) ||
+          i.desc.toLowerCase().includes(q) ||
+          i.crimes.toLowerCase().includes(q)
+        );
+      });
+
+      cardsContainer.innerHTML = '';
+      if (filtered.length === 0) {
+        cardsContainer.innerHTML = '<div class="p-8 text-center text-red-400 bg-gray-900/50 rounded-lg border border-red-700/50">Nenhum registro encontrado que corresponda aos filtros.</div>';
+      } else {
+        const frag = document.createDocumentFragment();
+        filtered.forEach(s => frag.appendChild(renderCard(s)));
+        cardsContainer.appendChild(frag);
+      }
+
+      countBadge.textContent = filtered.length;
+    }
+
+    // 🔁 Listeners para atualização em tempo real
+    searchInput.addEventListener('input', renderAll);
+    filterRisk.addEventListener('change', renderAll);
+    
+    // Botão Recarregar (limpa filtros e busca)
+    clearBtn.addEventListener('click', () => { 
+        searchInput.value = ''; 
+        filterRisk.value = 'all';
+        renderAll();
+    });
+
+    // Iniciar a renderização ao carregar a página
+    renderAll();
+  </script>
+</body>
+</html>
