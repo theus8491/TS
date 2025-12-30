@@ -1,0 +1,304 @@
+/* Paleta de Cores e Fontes */
+:root {
+    --primary-blue: #004a7c;     /* Azul Escuro Principal (Confiança) */
+    --secondary-gold: #c79a55;   /* Dourado Suave (Destaque/Elegância) */
+    --text-dark: #333333;        /* Texto Quase Preto */
+    --bg-light: #ffffff;         /* Fundo Branco */
+    --bg-gray: #f9f9f9;          /* Fundo Cinza Claro */
+    --border-light: #eeeeee;     /* Borda/Linha de Divisão */
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+/* Reset e Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary-gold);
+}
+
+/* --- HEADER / NAVEGAÇÃO --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--bg-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.header nav a {
+    color: var(--text-dark);
+    margin-left: 25px;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block; 
+}
+
+.header nav a:hover {
+    color: var(--secondary-gold);
+}
+
+/* --- SEÇÕES BASE --- */
+section {
+    padding: 80px 5%;
+    overflow: hidden;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-blue);
+}
+
+.bg-gray {
+    background-color: var(--bg-gray);
+}
+
+/* --- SEÇÃO HERO E FOTO DE PERFIL (CRUCIAL PARA O LAYOUT) --- */
+.hero-section {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--primary-blue);
+    color: var(--bg-light);
+}
+
+/* Estilos para centralizar a foto e o texto */
+.perfil-card {
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 5px;
+    /* Correção: Adiciona display flex para organizar a foto e o H2 */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* Estilo para a imagem: torna-a circular e profissional */
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;  
+    margin-bottom: 20px;
+    border: 3px solid var(--secondary-gold); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.perfil-card h2 {
+    color: var(--secondary-gold);
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.oab-info {
+    font-size: 1.1em;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* --- SEÇÃO SOBRE --- */
+.sobre-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center; 
+}
+
+.sobre-content p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #555;
+    text-align: center;
+}
+
+/* --- SEÇÃO ÁREAS --- */
+.areas-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.area-card {
+    width: 300px; 
+    max-width: calc(33% - 20px); 
+    background-color: var(--bg-light);
+    padding: 25px;
+    border-left: 3px solid var(--secondary-gold);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.area-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* --- SEÇÃO EXPERIÊNCIA (Timeline) --- */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: var(--border-light);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--secondary-gold);
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-item h3 {
+    color: var(--primary-blue);
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.timeline-item h4 {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+.timeline-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* --- SEÇÃO CONTATO --- */
+.contact-section {
+    background-color: var(--primary-blue);
+    color: var(--bg-light);
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: var(--bg-light);
+    font-weight: 600;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.cta-button {
+    background-color: var(--secondary-gold);
+    color: var(--bg-light);
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    outline: none; 
+}
+
+.cta-button:hover {
+    background-color: #a37f48; 
+}
+
+
+/* --- RODAPÉ --- */
+.footer {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid var(--border-light);
+    color: #888;
+    font-size: 0.8em;
+}
+
+/* --- RESPONSIVIDADE BÁSICA --- */
+@media (max-width: 900px) {
+    .areas-grid {
+        gap: 20px;
+    }
+    .area-card {
+        max-width: calc(50% - 10px); 
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header nav {
+        margin-top: 15px;
+    }
+
+    .header nav a {
+        margin: 0 10px;
+        display: block; 
+    }
+    
+    .area-card {
+        width: 100%; 
+        max-width: 100%; 
+    }
+
+    .timeline {
+        padding-left: 10px;
+    }
+}

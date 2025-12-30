@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Angélica | Engenheira Ambiental</title>
+
+    <!-- FONTE -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* CORES */
+        :root {
+            --verde-claro: #E8F5E9;
+            --verde-medio: #A5D6A7;
+            --verde-principal: #81C784;
+            --verde-texto: #2E7D32;
+            --branco: #ffffff;
+        }
+
+        body {
+            background-color: var(--verde-claro);
+            color: var(--verde-texto);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background-color: var(--verde-principal);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 26px;
+        }
+
+        .header nav a {
+            color: var(--verde-texto);
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+        .hero-section {
+            padding: 70px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .perfil-card {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            max-width: 420px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--verde-medio);
+            margin-bottom: 15px;
+        }
+
+        /* SEÇÕES */
+        .content-section {
+            padding: 60px 40px;
+        }
+
+        .content-section h2 {
+            margin-bottom: 25px;
+        }
+
+        /* ÁREAS */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .area-card {
+            background-color: var(--branco);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 6px solid var(--verde-principal);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* EXPERIÊNCIA */
+        .timeline-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid var(--verde-medio);
+        }
+
+        /* CONTATO */
+        .contact-section {
+            background-color: var(--verde-medio);
+            padding: 60px 40px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        /* BOTÃO */
+        .cta-button {
+            background-color: var(--verde-principal);
+            color: var(--verde-texto);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--verde-claro);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--verde-principal);
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Ana Angélica</h1>
+    <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#areas">Atuação</a>
+        <a href="#experiencia">Carreira</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="hero-section">
+        <div class="perfil-card">
+            <img src="Ana.jpg" alt="Foto de Ana Angélica" class="profile-photo">
+            <h2>Engenheira Ambiental</h2>
+            <p>Sustentabilidade • Gestão Ambiental • Compliance Ambiental</p>
+        </div>
+    </section>
+
+    <section id="sobre" class="content-section">
+        <h2>Sobre Mim</h2>
+        <p>
+            Engenheira ambiental com experiência em sustentabilidade, gestão de riscos ambientais
+            e apoio a empresas que buscam crescer de forma responsável e alinhada às boas práticas ambientais.
+        </p>
+    </section>
+
+    <section id="areas" class="content-section">
+        <h2>Áreas de Atuação</h2>
+        <div class="areas-grid">
+            <div class="area-card">
+                <h3>Licenciamento Ambiental</h3>
+                <p>Atuação em processos de licenciamento e regularização ambiental.</p>
+            </div>
+            <div class="area-card">
+                <h3>Gestão Ambiental</h3>
+                <p>Planejamento e implementação de práticas sustentáveis.</p>
+            </div>
+            <div class="area-card">
+                <h3>Consultoria ESG</h3>
+                <p>Apoio a empresas na adequação ambiental e sustentabilidade corporativa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="content-section">
+        <h2>Experiência e Formação</h2>
+        <div class="timeline-item">
+            <h3>2025</h3>
+            <p>Licenciamento ambiental.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2025</h3>
+            <p>Fiscalização Ambiental.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2025</h3>
+            <p>Pós graduação em Engenheira de segurança do trabalho.</p>
+        </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+        <h2>Contato</h2>
+        <div class="contact-info">
+            <p>Email: anaengamb@yahoo.com.br</p>
+            <p>Telefone: (71) 9-9350-6144</p>
+            <p>Simões Filho – BA</p>
+        </div>
+
+        <a href="https://wa.me/5571993506144?text=Olá%20Ana,%20gostaria%20de%20agendar%20um%20contato."
+           target="_blank"
+           style="text-decoration: none;">
+            <button class="cta-button">Agendar Contato</button>
+        </a>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>© 2025 Ana Angélica — Engenharia Ambiental</p>
+</footer>
+
+</body>
+</html>
