@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verdade ou Desafio – Lésbicas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-orange-400 via-pink-500 to-purple-600 flex flex-col items-center px-4 pt-10 pb-36">
+
+  <div class="bg-white/90 backdrop-blur rounded-3xl shadow-2xl max-w-md w-full p-6 text-center">
+
+    <h1 class="text-3xl font-extrabold text-pink-600">🌈 Verdade ou Desafio</h1>
+    <p class="text-gray-600 mb-4 font-semibold">Edição Lésbica 🧡🤍💗</p>
+
+    <!-- PERGUNTA ANTERIOR -->
+    <div class="bg-gray-100 rounded-xl p-3 mb-4 text-sm text-gray-700">
+      <strong>Pergunta anterior:</strong>
+      <div id="anterior" class="italic mt-1">—</div>
+    </div>
+
+    <!-- PERGUNTA ATUAL -->
+    <div id="resultado"
+      class="bg-pink-100/80 rounded-2xl p-5 mb-6 min-h-[100px] flex items-center justify-center text-lg font-semibold text-pink-800">
+      Clique em um botão 👇
+    </div>
+
+    <div class="flex gap-4 mb-2">
+      <button id="btnVerdade" onclick="sortearVerdade()"
+        class="flex-1 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-2xl font-bold">
+        Verdade 💬
+      </button>
+
+      <button id="btnDesafio" onclick="sortearDesafio()"
+        class="flex-1 bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-2xl font-bold">
+        Desafio 🎯
+      </button>
+    </div>
+
+    <!-- CONTADORES -->
+    <div class="flex justify-between text-sm font-semibold text-gray-700 mb-4">
+      <span>Verdade: <span id="countVerdade">0</span></span>
+      <span>Desafio: <span id="countDesafio">0</span></span>
+    </div>
+
+    <button onclick="resetarRodada()"
+      class="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-2xl font-bold mb-4">
+      🔄 Próxima rodada
+    </button>
+
+    <a href="https://chat.whatsapp.com/DJmta3TDuawIs7zjVmtE4q" target="_blank"
+      class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 rounded-2xl font-bold">
+      Entrar no grupo
+    </a>
+  </div>
+
+  <script>
+    const verdades = [
+      "Com quantos anos voce perdeu a virgindade?",
+      "Já trocou nudes com alguém do grupo?",
+      "Qual é a coisa mais louca que você já fez?",
+      "Qual música representa você?"
+    ];
+
+    const desafios = [
+      "Manda uma mensagem para alguém que você ama dizendo algo que você nunca disse antes",
+      "Tira uma foto de calcinha",
+      "Escolha alguma menina do grupo para mostrar o peito no grupo!",
+      "Escolha alguem do grupo para mostra uma foto de calcinha e sutiã!"
+    ];
+
+    let jaClicou = false;
+    let contadorVerdade = 0;
+    let contadorDesafio = 0;
+    let perguntaAtual = null;
+
+    function atualizarAnterior() {
+      if (perguntaAtual) {
+        document.getElementById("anterior").innerText = perguntaAtual;
+      }
+    }
+
+    function sortearVerdade() {
+      if (jaClicou) return;
+      jaClicou = true;
+
+      atualizarAnterior();
+
+      contadorVerdade++;
+      countVerdade.innerText = contadorVerdade;
+
+      perguntaAtual = verdades[Math.floor(Math.random() * verdades.length)];
+      resultado.innerText = perguntaAtual;
+
+      travar();
+    }
+
+    function sortearDesafio() {
+      if (jaClicou) return;
+      jaClicou = true;
+
+      atualizarAnterior();
+
+      contadorDesafio++;
+      countDesafio.innerText = contadorDesafio;
+
+      perguntaAtual = desafios[Math.floor(Math.random() * desafios.length)];
+      resultado.innerText = perguntaAtual;
+
+      travar();
+    }
+
+    function travar() {
+      btnVerdade.disabled = true;
+      btnDesafio.disabled = true;
+      btnVerdade.classList.add("opacity-50", "cursor-not-allowed");
+      btnDesafio.classList.add("opacity-50", "cursor-not-allowed");
+    }
+
+    function resetarRodada() {
+      jaClicou = false;
+      resultado.innerText = "Clique em um botão 👇";
+      btnVerdade.disabled = false;
+      btnDesafio.disabled = false;
+      btnVerdade.classList.remove("opacity-50", "cursor-not-allowed");
+      btnDesafio.classList.remove("opacity-50", "cursor-not-allowed");
+    }
+  </script>
+
+</body>
+</html>
