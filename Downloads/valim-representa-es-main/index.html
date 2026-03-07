@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valim Representações</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+<header class="w-full bg-white shadow-sm">
+  <div class="max-w-[1200px] mx-auto px-6 py-5 relative flex items-center justify-center md:justify-start">
+    
+    <img src="Valim.jpeg" alt="Valim Representações"
+         onclick="abrirLogo()"
+         class="h-[110px] w-[110px] object-cover rounded-full shadow-md cursor-pointer">
+
+    <nav class="hidden md:flex gap-10 font-bold text-sm tracking-widest text-blue-900
+                absolute left-1/2 -translate-x-1/2">
+      <a href="#sobre" class="hover:text-yellow-500 transition">SOBRE</a>
+      <a href="#marcas" class="hover:text-yellow-500 transition">EMPRESAS REPRESENTADAS</a>
+      <a href="#contato" class="hover:text-yellow-500 transition">FALE CONOSCO</a>
+    </nav>
+
+  </div>
+</header>
+
+<nav class="md:hidden w-full bg-white border-b border-gray-200">
+  <div class="flex gap-8 px-6 py-4 overflow-x-auto whitespace-nowrap
+              font-bold text-sm tracking-widest text-blue-900 scrollbar-hide">
+    <a href="#sobre" class="flex-shrink-0 hover:text-yellow-500">SOBRE</a>
+    <a href="#marcas" class="flex-shrink-0 hover:text-yellow-500">EMPRESAS REPRESENTADAS</a>
+    <a href="#contato" class="flex-shrink-0 hover:text-yellow-500">FALE CONOSCO</a>
+  </div>
+</nav>
+
+<section id="sobre" class="max-w-[900px] mx-auto px-5 py-12">
+  <h2 class="text-3xl font-bold mb-4">Sobre</h2>
+  <p class="text-gray-600 mb-6">
+    A <strong>VALIM REPRESENTAÇÕES</strong> atua no mercado de representação comercial,
+    com foco em produtos alimentícios.
+  </p>
+
+  <h3 class="text-2xl font-bold mb-3">Nossa História</h3>
+
+  <p class="text-gray-600 mb-4">
+    Somos uma empresa especializada na representação de alimentos para o varejo,
+    conectando marcas renomadas a distribuidores e lojistas.
+  </p>
+
+  <p class="text-gray-600 mb-4">
+    Com mais de três décadas de atuação no mercado, construímos uma sólida reputação
+    baseada na confiança, qualidade e excelência no atendimento.
+  </p>
+
+  <p class="text-gray-600">
+    Nossa experiência e conhecimento do mercado nos permite oferecer soluções
+    personalizadas que atendem às necessidades específicas de cada cliente.
+  </p>
+</section>
+
+<section class="w-full bg-[#0d2b52] py-16 px-6 text-center">
+  <h2 class="text-white text-3xl md:text-4xl font-extrabold tracking-wide">
+    FALE COM NOSSOS CONSULTORES!
+  </h2>
+
+  <p class="text-yellow-400 tracking-[0.3em] mt-4 text-sm md:text-base font-semibold">
+    ATENDIMENTO VIA WHATSAPP
+  </p>
+
+  <a href="https://wa.me/5571999216381" target="_blank"
+     class="inline-block mt-8 bg-yellow-400 text-[#0d2b52] font-bold px-8 py-3 rounded-full
+            hover:bg-yellow-300 transition duration-300">
+    FALAR NO WHATSAPP
+  </a>
+</section>
+
+<section id="marcas" class="py-16 bg-gray-50">
+
+<h2 class="text-center text-2xl font-black mb-12 tracking-wide">
+MARCAS REPRESENTADAS
+</h2>
+
+<div class="max-w-[1100px] mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+
+<div class="logo-card"><img src="parbo.png"></div>
+<div class="logo-card"><img src="ode2.png"></div>
+<div class="logo-card"><img src="campo-belo.png"></div>
+<div class="logo-card"><img src="norsal.png"></div> 
+
+<!-- FRINENSE CORRIGIDA -->
+<div class="logo-card">
+<img src="fri23.png" style="height:95px; max-width:none;">
+</div>
+
+<div class="logo-card"><img src="easychef.jpeg"></div>
+<div class="logo-card"><img src="Archer_Daniels_Midland_logo.svg"></div>
+<div class="logo-card"><img src="colheita 12.jpeg"></div>
+<div class="logo-card"><img src="logoLumipam.png"></div>
+<div class="logo-card"><img src="bella.png"></div>
+
+</div>
+</section>
+
+<section id="contato" class="bg-[#0a2547] text-white text-center py-20 px-6">
+
+<p class="tracking-[0.4em] text-sm mb-6 opacity-80">
+FALE CONOSCO
+</p>
+
+<h2 class="text-5xl md:text-6xl font-extrabold mb-8">
+(71) 99921-6381
+</h2>
+
+<div class="flex justify-center gap-8 mt-12 text-xl opacity-80">
+
+<a href="https://www.instagram.com/valim_representacoes" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://wa.me/5571999216381" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+</div>
+</section>
+
+<footer class="text-center py-6 text-sm text-gray-500">
+©2025 Valim Representações. Todos os direitos reservados.
+</footer>
+
+<div id="logoModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+
+<button onclick="fecharLogo()" class="absolute top-6 right-6 text-white text-4xl">
+&times;
+</button>
+
+<img src="Valim.jpeg" class="max-w-[90%] max-h-[85%] rounded-lg shadow-2xl">
+
+</div>
+
+<style>
+
+.logo-card{
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 4px 10px rgba(0,0,0,.08);
+display:flex;
+align-items:center;
+justify-content:center;
+height:120px;
+}
+
+.logo-card img{
+height:70px;
+width:auto;
+max-width:140px;
+object-fit:contain;
+}
+
+.scrollbar-hide::-webkit-scrollbar{display:none}
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+
+</style>
+
+<script>
+
+function abrirLogo(){
+logoModal.classList.remove("hidden");
+logoModal.classList.add("flex");
+}
+
+function fecharLogo(){
+logoModal.classList.add("hidden");
+logoModal.classList.remove("flex");
+}
+
+</script>
+
+</body>
+</html>
